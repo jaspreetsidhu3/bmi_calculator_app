@@ -18,11 +18,11 @@ class _HomeActivityState extends State<HomeActivity> {
 
   // Group id for Switch
   int grupid = 0;
+  double _currentvalueheight = 0;
+  double _currentvalueweight = 3;
+  double _currentvalueage = 1;
 
   // Controller for TextFields
-  TextEditingController textEditingController_height = TextEditingController();
-  TextEditingController textEditingController_weight = TextEditingController();
-  TextEditingController textEditingController_age = TextEditingController();
 
   Widget build(BuildContext context) {
     return (Material(
@@ -56,6 +56,7 @@ class _HomeActivityState extends State<HomeActivity> {
                                     style: Theme.of(context).textTheme.title,
                                   ),
                                   Radio(
+                                    activeColor: Colors.blueAccent,
                                     value: 0,
                                     onChanged: getCheckbox,
                                     groupValue: grupid,
@@ -83,6 +84,7 @@ class _HomeActivityState extends State<HomeActivity> {
                                     style: Theme.of(context).textTheme.title,
                                   ),
                                   Radio(
+                                    activeColor: Colors.blueAccent,
                                     value: 1,
                                     onChanged: getCheckbox,
                                     groupValue: grupid,
@@ -112,24 +114,22 @@ class _HomeActivityState extends State<HomeActivity> {
                             style: Theme.of(context).textTheme.subtitle2,
                           ),
                           Container(
-                            padding: EdgeInsets.only(left: 30.0, right: 30.0),
-                            child: TextFormField(
-                              validator: (String value) {
-                                if (value.isEmpty) {
-                                  return "Can't be empty";
-                                }
-                              },
-                              inputFormatters: [
-                                WhitelistingTextInputFormatter.digitsOnly
-                              ],
-                              keyboardType: TextInputType.phone,
-                              textAlign: TextAlign.center,
-                              controller: textEditingController_height,
-                              decoration: InputDecoration(
-                                labelText: "must be in 'm'",
-                              ),
-                            ),
-                          )
+                              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Slider(
+                                value: _currentvalueheight,
+                                min: 0,
+                                max: 3,
+                                divisions: 10,
+                                label: _currentvalueheight.round().toString(),
+                                onChanged: (double d) {
+                                  setState(() {
+                                    debugPrint(d.toString());
+                                    _currentvalueheight = d;
+                                  });
+                                },
+                              )),
+                          Text(_currentvalueheight.toStringAsPrecision(2) +
+                              "meters")
                         ],
                       ),
                     ),
@@ -139,14 +139,14 @@ class _HomeActivityState extends State<HomeActivity> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsets.only(right: 10.0, top: 30.0, left: 10.0),
+                            EdgeInsets.only(right: 3.0, top: 30.0, left: 3.0),
                         child: Container(
                             height: 130,
                             width: 140,
                             color: Colors.black26,
                             child: Padding(
                               padding: EdgeInsets.only(
-                                  left: 10.0, right: 10.0, top: 20.0),
+                                  left: 0.0, right: 0.0, top: 20.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -156,23 +156,22 @@ class _HomeActivityState extends State<HomeActivity> {
                                         Theme.of(context).textTheme.subtitle2,
                                   ),
                                   Expanded(
-                                    child: TextFormField(
-                                      validator: (String value) {
-                                        if (value.isEmpty) {
-                                          return "Can't be empty";
-                                        }
+                                    child: Slider(
+                                      value: _currentvalueweight,
+                                      min: 3,
+                                      max: 100,
+                                      label: _currentvalueweight.round().toString(),
+                                      divisions: 100,
+                                      onChanged: (double d) {
+                                        setState(() {
+                                          _currentvalueweight = d;
+                                        });
                                       },
-                                      controller: textEditingController_weight,
-                                      textAlign: TextAlign.center,
-                                      keyboardType: TextInputType.phone,
-                                      inputFormatters: [
-                                        WhitelistingTextInputFormatter
-                                            .digitsOnly
-                                      ],
-                                      decoration: InputDecoration(
-                                          labelText: "must in Kg"),
                                     ),
-                                  )
+                                  ),
+                                  Text(_currentvalueweight
+                                          .toStringAsPrecision(2) +
+                                      "Kg")
                                 ],
                               ),
                             )),
@@ -186,7 +185,7 @@ class _HomeActivityState extends State<HomeActivity> {
                             color: Colors.black26,
                             child: Padding(
                               padding: EdgeInsets.only(
-                                  left: 10.0, right: 10.0, top: 20.0),
+                                  left: 0.0, right: 1.0, top: 20.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -196,27 +195,20 @@ class _HomeActivityState extends State<HomeActivity> {
                                         Theme.of(context).textTheme.subtitle2,
                                   ),
                                   Expanded(
-                                    child: TextFormField(
-                                      style:
-                                          Theme.of(context).textTheme.bodyText2,
-                                      validator: (String value) {
-                                        if (value.isEmpty) {
-                                          return "Can't be empty";
-                                        }
-                                      },
-                                      controller: textEditingController_age,
-                                      inputFormatters: [
-                                        WhitelistingTextInputFormatter
-                                            .digitsOnly
-                                      ],
-                                      textAlign: TextAlign.center,
-                                      keyboardType:
-                                          TextInputType.numberWithOptions(
-                                              signed: false, decimal: true),
-                                      decoration: InputDecoration(
-                                          labelText: "must be in Years"),
-                                    ),
-                                  )
+                                      child: Slider(
+                                    value: _currentvalueage,
+                                    min: 1,
+                                    max: 130,
+                                        label: _currentvalueage.round().toString(),
+                                    divisions: 130,
+                                    onChanged: (double d) {
+                                      setState(() {
+                                        _currentvalueage = d;
+                                      });
+                                    },
+                                  )),
+                                  Text(_currentvalueage.round().toString() +
+                                      "years")
                                 ],
                               ),
                             )),
@@ -234,7 +226,7 @@ class _HomeActivityState extends State<HomeActivity> {
                             bottom: 10,
                           ),
                           child: RaisedButton(
-                            color: Colors.deepPurple,
+                            color: Colors.blueAccent,
                             child: Text(
                               "Calculate",
                               style: Theme.of(context).textTheme.subtitle1,
@@ -263,10 +255,9 @@ class _HomeActivityState extends State<HomeActivity> {
 // Computing all the data
   void computeResult() {
     //defining
-    int weight = int.parse(textEditingController_weight.text);
-    int height = int.parse(textEditingController_height.text);
-    int age = int.parse(textEditingController_age.text);
-    double sum = (weight / (height * height));
+
+    double sum =
+        (_currentvalueweight / (_currentvalueheight * _currentvalueheight));
     // Navigating the result activity screen
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return ResultActivity(sum.toString());

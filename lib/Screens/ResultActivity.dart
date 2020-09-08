@@ -16,7 +16,7 @@ class ResultActivity extends StatelessWidget {
     return (MaterialApp(
         title: "BMI Calculator",
         theme: ThemeData(
-          primaryColor: Colors.deepPurple,
+          primaryColor: Colors.blueAccent,
           backgroundColor: Colors.deepPurple,
           brightness: Brightness.dark,
         ),
@@ -47,10 +47,10 @@ class ResultActivityState extends State<Datashowing> {
   //init
   String data;
   String Category = "category";
-
+  double cate;
   ResultActivityState(String data) {
     this.data = data;
-    double cate = double.parse(data);
+     cate = double.parse(data);
   // Camparing data with BMI data
     if (cate < 18.5) {
       Category = "Thin";
@@ -75,7 +75,7 @@ class ResultActivityState extends State<Datashowing> {
           margin: EdgeInsets.only(bottom: 10.0),
           child: Center(
             child: Text(
-              data,
+              cate.toStringAsPrecision(4),
               style: Theme.of(context).textTheme.headline3,
             ),
           ),
