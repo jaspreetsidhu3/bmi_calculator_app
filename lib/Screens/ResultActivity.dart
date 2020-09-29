@@ -28,6 +28,7 @@ class ResultActivity extends StatelessWidget {
         )));
   }
 }
+
 // StatefulWidgets
 class Datashowing extends StatefulWidget {
   //init
@@ -42,16 +43,18 @@ class Datashowing extends StatefulWidget {
     return ResultActivityState(data);
   }
 }
+
 // Adding all the State for stateful widgets
 class ResultActivityState extends State<Datashowing> {
   //init
   String data;
   String Category = "category";
   double cate;
+
   ResultActivityState(String data) {
     this.data = data;
-     cate = double.parse(data);
-  // Camparing data with BMI data
+    cate = double.parse(data);
+    // Camparing data with BMI data
     if (cate < 18.5) {
       Category = "Thin";
       debugPrint("Thin ->" + cate.toString());

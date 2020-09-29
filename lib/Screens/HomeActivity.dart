@@ -160,7 +160,9 @@ class _HomeActivityState extends State<HomeActivity> {
                                       value: _currentvalueweight,
                                       min: 3,
                                       max: 100,
-                                      label: _currentvalueweight.round().toString(),
+                                      label: _currentvalueweight
+                                          .round()
+                                          .toString(),
                                       divisions: 100,
                                       onChanged: (double d) {
                                         setState(() {
@@ -199,7 +201,7 @@ class _HomeActivityState extends State<HomeActivity> {
                                     value: _currentvalueage,
                                     min: 1,
                                     max: 130,
-                                        label: _currentvalueage.round().toString(),
+                                    label: _currentvalueage.round().toString(),
                                     divisions: 130,
                                     onChanged: (double d) {
                                       setState(() {

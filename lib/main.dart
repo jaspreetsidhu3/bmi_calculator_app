@@ -43,23 +43,24 @@ class SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
         Duration(seconds: 3),
-            () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => MyMaterialApp())));
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => MyMaterialApp())));
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:Scaffold(
-        body: Center(
-          child: Text("Bmi Calculator",textAlign: TextAlign.left,style: TextStyle(color: Colors.blue,fontSize: 21),),
-        ),
-      )
-
-
-    );
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: Center(
+            child: Text(
+              "Bmi Calculator",
+              textAlign: TextAlign.left,
+              style: TextStyle(color: Colors.blue, fontSize: 21),
+            ),
+          ),
+        ));
     // TODO: implement build
-
   }
 }
 
