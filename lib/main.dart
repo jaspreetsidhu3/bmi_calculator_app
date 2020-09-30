@@ -13,6 +13,7 @@ void main() {
   runApp(MyApp());
 }
 
+//Default Application Design and calling Splash Screen
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//StateFull Splash
 class SplashScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -37,6 +39,7 @@ class SplashScreen extends StatefulWidget {
   }
 }
 
+// Splash Screen with Timer to move on MyMaterial App
 class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
