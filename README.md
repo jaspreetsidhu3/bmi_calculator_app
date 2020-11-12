@@ -64,6 +64,6 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-Name - [Jaspreet Singh](https://www.linkedin.com/in/jaspreetsidhu13/) -  jaspreetsidhu3may@gmail.com
+Name - [Jaspreet Singh](https://www.linkedin.com/in/jaspreetsidhu13/)
 
 Project Link: [bmi calculator app](https://github.com/jaspreetsidhu3/bmi_calculator_app)
