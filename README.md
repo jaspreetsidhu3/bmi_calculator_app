@@ -1,6 +1,5 @@
 # bmi_calculator_app
-
-Bmi calculator app build with Flutter
+<img src="BMI.png" />
 
 ## Getting Started
 
